@@ -1,6 +1,4 @@
 /venv
-/config/config.ini
-/dist
-/src/ChatGPT_Dialog_with_GUI.egg-info
 /.idea
-/src/__pycache__
+/test
+/config/config.ini

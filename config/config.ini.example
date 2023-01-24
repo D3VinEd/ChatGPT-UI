@@ -1,5 +1,5 @@
 [OPENAI-API]
-APIKey = sk-ekcrOFI5MQf09HatrjIOVUuzvcFDvdsfuVBluv1Qkr7N5rLQ2WDIji
-MaxTokens = 3500
-Engine = text-davinci-003
-Temperature = 0.5
+apikey = change it
+maxtokens = 3500
+engine = text-davinci-003
+temperature = 0.5

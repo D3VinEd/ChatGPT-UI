@@ -4,10 +4,10 @@ import configparser
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 
-ENGINE = config['OPENAI-API']['Engine']
-TEMPERATURE = float(config['OPENAI-API']['Temperature'])
-MAX_TOKENS = int(config['OPENAI-API']['MaxTokens'])
-API_KEY = config['OPENAI-API']['APIKey']
+ENGINE = config['OPENAI-API']['engine']
+TEMPERATURE = float(config['OPENAI-API']['temperature'])
+MAX_TOKENS = int(config['OPENAI-API']['maxtokens'])
+API_KEY = config['OPENAI-API']['apikey']
 
 
 def api_request(prompt):
