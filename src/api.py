@@ -24,6 +24,4 @@ def api_request(prompt):
         # finden. Eine niedrigere Temperatur erhöht die Explorationsintensität nicht und führt zu einer stärkeren
         # Exploitation des vorhandenen Wissens.
     )
-    message = completions.choices[0].text
-    # print(completions.choices)
-    return message
+    return completions.choices[0].text

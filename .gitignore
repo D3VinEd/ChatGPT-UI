@@ -1,4 +1,6 @@
 /venv
 /.idea
-/test/*
+/test/
 /config/config.ini
+*.pyc
+src/__pycache__/api.cpython-310.pyc
