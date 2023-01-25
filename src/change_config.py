@@ -47,12 +47,12 @@ class ConfigChanger:
 
             self.speech_active_var = tk.StringVar()
             self.speech_active_var.set(self.config['SPEECH']['active'])
-            self.speech_active_label = ttk.Label(self.root, text="Sprachausgabe aktiv:")
-            self.speech_active_checkbox = ttk.Checkbutton(self.root, text="yes", variable=self.speech_active_var)
+            self.speech_active_label = ttk.Label(self.root, text="Sprachausgabe:")
+            self.speech_active_checkbox = ttk.Checkbutton(self.root, text="Ja", variable=self.speech_active_var)
 
             self.speech_speed_var = tk.StringVar()
             self.speech_speed_var.set(self.config['SPEECH']['speed'])
-            self.speech_speed_label = ttk.Label(self.root, text="Geschwindigkeit:")
+            self.speech_speed_label = ttk.Label(self.root, text="Wiedergabegeschwindigkeit:")
             self.speech_speed_entry = ttk.Entry(self.root, textvariable=self.speech_speed_var)
 
             self.save_button = ttk.Button(self.root, text="Speichern", command=self.save_config)

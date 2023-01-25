@@ -79,4 +79,5 @@ class ChatGPT:
         self.answer.insert(1.0, response)
         if config['SPEECH']['active'] == str(1):
             text_to_speech(response)
-        ResponseHandler(question, response)
+        handler = ResponseHandler(question, response)
+        handler.save()

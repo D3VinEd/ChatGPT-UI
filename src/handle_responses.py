@@ -8,28 +8,24 @@ class ResponseHandler:
     def __init__(self, question, answer):
         self.question = question
         self.answer = answer
-        self.file = Path(ResponseHandler.FILE_PATH)
-
-        self.check_file_exists()
-        self.save()
 
     def save(self):
-        with open(ResponseHandler.FILE_PATH, "r+") as file:
-            file_data = json.load(file)
-            data = {
-                'question':  self.question,
-                'answer': self.answer
-            }
-            file_data.append(json.dumps(data, indent=4))
-            file.seek(0)
-            json.dump(file_data, file, indent=4)
+        file_data = self.load_data()
+        data = {'question': self.question, 'answer': self.answer}
+        file_data.append(data)
+        self.save_data(file_data)
 
     def load(self):
-        with open(ResponseHandler.FILE_PATH, "r") as file:
-            return json.load(file)
+        return self.load_data()
 
-    def check_file_exists(self):
-        if not self.file.is_file():
-            f = open(ResponseHandler.FILE_PATH, "w")
-            f.write("[]")
-            f.close()
+    def load_data(self):
+        file_path = Path(self.FILE_PATH)
+        if file_path.is_file():
+            with open(self.FILE_PATH, "r") as file:
+                return json.load(file)
+        else:
+            return []
+
+    def save_data(self, data):
+        with open(self.FILE_PATH, "w") as file:
+            json.dump(data, file, indent=4)
