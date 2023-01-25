@@ -101,6 +101,7 @@ class ConfigChanger:
         self.config.set('OPENAI-API', 'temperature', self.temperature_var.get())
         self.config.set('SPEECH', 'language', self.language_var.get())
         self.config.set('SPEECH', 'active', self.speech_active_var.get())
+        self.config.set('SPEECH', 'speed', self.speech_speed_var.get())
 
         with open(CONFIG_FILE, 'w') as configfile:
             self.config.write(configfile)
