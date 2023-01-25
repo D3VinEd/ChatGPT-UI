@@ -1,16 +1,14 @@
 import openai
 import configparser
 
-config = configparser.ConfigParser()
-config.read('config/config.ini')
-
-ENGINE = config['OPENAI-API']['engine']
-TEMPERATURE = float(config['OPENAI-API']['temperature'])
-MAX_TOKENS = int(config['OPENAI-API']['maxtokens'])
-API_KEY = config['OPENAI-API']['apikey']
-
 
 def api_request(prompt):
+    config = configparser.ConfigParser()
+    config.read('config/config.ini')
+    ENGINE = config['OPENAI-API']['engine']
+    TEMPERATURE = float(config['OPENAI-API']['temperature'])
+    MAX_TOKENS = int(config['OPENAI-API']['maxtokens'])
+    API_KEY = config['OPENAI-API']['apikey']
     openai.api_key = API_KEY
     completions = openai.Completion.create(
         engine=ENGINE,
