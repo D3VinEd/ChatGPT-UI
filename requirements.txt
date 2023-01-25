@@ -1,2 +1,2 @@
-openai==0.26.2
+openai==0.26.3
 pyttsx3
