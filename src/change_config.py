@@ -50,6 +50,11 @@ class ConfigChanger:
             self.speech_active_label = ttk.Label(self.root, text="Sprachausgabe aktiv:")
             self.speech_active_checkbox = ttk.Checkbutton(self.root, text="yes", variable=self.speech_active_var)
 
+            self.speech_speed_var = tk.StringVar()
+            self.speech_speed_var.set(self.config['SPEECH']['speed'])
+            self.speech_speed_label = ttk.Label(self.root, text="Geschwindigkeit:")
+            self.speech_speed_entry = ttk.Entry(self.root, textvariable=self.speech_speed_var)
+
             self.save_button = ttk.Button(self.root, text="Speichern", command=self.save_config)
 
             self.helper_text = "API-Key: Persönlicher API-Key von Openai. \n\n" \
@@ -81,9 +86,12 @@ class ConfigChanger:
             self.speech_active_label.grid(row=5, column=0, padx=5, pady=5)
             self.speech_active_checkbox.grid(row=5, column=1, padx=5, pady=5)
 
-            self.save_button.grid(row=6, column=1, padx=5, pady=5)
+            self.speech_speed_label.grid(row=6, column=0, padx=5, pady=5)
+            self.speech_speed_entry.grid(row=6, column=1, padx=5, pady=5)
 
-            self.helper_label.grid(row=7, column=0, columnspan=2, padx=5, pady=5)
+            self.save_button.grid(row=7, column=1, padx=5, pady=5)
+
+            self.helper_label.grid(row=8, column=0, columnspan=2, padx=5, pady=5)
             ConfigChanger.change_config_opened = 1
 
     def save_config(self):

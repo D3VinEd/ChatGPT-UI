@@ -3,3 +3,4 @@
 /test/
 *.pyc
 config/config.ini
+data/conversations.json
