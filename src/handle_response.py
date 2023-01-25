@@ -9,16 +9,16 @@ class ResponseHandler:
         self.question = question
         self.answer = answer
 
-    def save(self):
+    def save(self) -> None:
         file_data = self.load_data()
         data = {'question': self.question, 'answer': self.answer}
         file_data.append(data)
         self.save_data(file_data)
 
-    def load(self):
+    def load(self) -> list:
         return self.load_data()
 
-    def load_data(self):
+    def load_data(self) -> list:
         file_path = Path(self.FILE_PATH)
         if file_path.is_file():
             with open(self.FILE_PATH, "r") as file:
@@ -26,6 +26,6 @@ class ResponseHandler:
         else:
             return []
 
-    def save_data(self, data):
+    def save_data(self, data) -> None:
         with open(self.FILE_PATH, "w") as file:
             json.dump(data, file, indent=4)

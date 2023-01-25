@@ -1,8 +1,8 @@
 from tkinter import *
 from src.api import api_request
 from src.change_config import ConfigChanger
-from src.texttospeech import text_to_speech
-from src.handle_responses import ResponseHandler
+from src.text_to_speech import text_to_speech
+from src.handle_response import ResponseHandler
 from configparser import ConfigParser
 
 
@@ -17,14 +17,14 @@ class ChatGPT:
     def __init__(self, master):
         self.master = master
         self.master.title("Chat-GPT")
-        self.master.geometry("950x600")
+        self.master.geometry("950x500")
         self.master.resizable(0, 0)
 
         # Frames
         self.question_frame = Frame(self.master)
         self.question_frame.pack(pady=20, padx=10, fill=X)
         self.button_frame = Frame(self.master)
-        self.button_frame.pack(pady=10, padx=10, fill=X)
+        self.button_frame.pack(pady=10, padx=10, fill=X, )
         self.answer_frame = Frame(self.master)
         self.answer_frame.pack(pady=20, padx=10, fill=X)
 
@@ -39,14 +39,14 @@ class ChatGPT:
         self.answer_scrollbar_y.pack(side=RIGHT, fill=Y)
 
         # Question - Frame
-        self.question_label = Label(self.question_frame, text="Frage:", pady=5, padx=5)
+        self.question_label = Label(self.question_frame, text="Frage:   ", pady=5, padx=5)
         self.question = Text(self.question_frame, height=8, width=110, yscrollcommand=self.question_scrollbar_y.set,
                              xscrollcommand=self.question_scrollbar_x.set, wrap='none')
         self.question_label.pack(side=LEFT)
         self.question.pack(side=LEFT, fill=BOTH)
 
         # Button Absenden
-        self.submit_button = Button(self.button_frame, text='Absenden', command=self.ask)
+        self.submit_button = Button(self.button_frame, text='Absenden', command=self.ask_question)
         self.submit_button.pack(side=LEFT, pady=5, padx=5)
 
         # Button Löschen
@@ -70,7 +70,7 @@ class ChatGPT:
         self.answer_scrollbar_y.config(command=self.answer.yview)
         self.answer_scrollbar_x.config(command=self.answer.xview)
 
-    def ask(self):
+    def ask_question(self) -> None:
         config = ConfigParser()
         config.read('config/config.ini')
         self.answer.delete(1.0, END)

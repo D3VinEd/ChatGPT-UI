@@ -2,7 +2,7 @@ import pyttsx3
 from configparser import ConfigParser
 
 
-def text_to_speech(text):
+def text_to_speech(text) -> None:
     config = ConfigParser()
     config.read('config/config.ini')
     engine = pyttsx3.init()

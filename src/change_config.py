@@ -94,7 +94,7 @@ class ConfigChanger:
             self.helper_label.grid(row=8, column=0, columnspan=2, padx=5, pady=5)
             ConfigChanger.change_config_opened = 1
 
-    def save_config(self):
+    def save_config(self) -> None:
         self.config.set('OPENAI-API', 'apikey', self.api_key_var.get())
         self.config.set('OPENAI-API', 'maxtokens', self.max_tokens_var.get())
         self.config.set('OPENAI-API', 'engine', self.engine_var.get())
@@ -109,6 +109,6 @@ class ConfigChanger:
         self.root.destroy()
         ConfigChanger.change_config_opened = 0
 
-    def on_closing(self):
+    def on_closing(self) -> None:
         ConfigChanger.change_config_opened = 0
         self.root.destroy()
