@@ -5,18 +5,18 @@ import configparser
 def api_request(prompt):
     config = configparser.ConfigParser()
     config.read('config/config.ini')
-    ENGINE = config['OPENAI-API']['engine']
-    TEMPERATURE = float(config['OPENAI-API']['temperature'])
-    MAX_TOKENS = int(config['OPENAI-API']['maxtokens'])
-    API_KEY = config['OPENAI-API']['apikey']
-    openai.api_key = API_KEY
+    engine = config['OPENAI-API']['engine']
+    temperature = float(config['OPENAI-API']['temperature'])
+    max_tokens = int(config['OPENAI-API']['maxtokens'])
+    api_key = config['OPENAI-API']['apikey']
+    openai.api_key = api_key
     completions = openai.Completion.create(
-        engine=ENGINE,
+        engine=engine,
         prompt=prompt,
-        max_tokens=MAX_TOKENS,
+        max_tokens=max_tokens,
         n=1,
         stop=None,
-        temperature=TEMPERATURE,
+        temperature=temperature,
         # Temperature ist ein Parameter in OpenAI Completion, der die Intensität der Exploration bestimmt. Je höher
         # die Temperatur, desto mehr wird das Modell neue, unerforschte Wege erkunden, um eine bessere Lösung zu
         # finden. Eine niedrigere Temperatur erhöht die Explorationsintensität nicht und führt zu einer stärkeren
