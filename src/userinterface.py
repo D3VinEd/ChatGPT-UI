@@ -2,6 +2,7 @@ from tkinter import *
 from src.api import api_request
 from src.change_config import ConfigChanger
 from src.texttospeech import text_to_speech
+from configparser import ConfigParser
 
 
 def run_ui():
@@ -66,8 +67,12 @@ class ChatGPT:
         self.answer_scrollbar_x.config(command=self.answer.xview)
 
     def ask(self):
+        config = ConfigParser()
+        config.read('config/config.ini')
         self.answer.delete(1.0, END)
         question = self.question.get(1.0, END)
         response = api_request(question)
         self.answer.insert(1.0, response)
-        text_to_speech(response, 'de')
+        print(config['SPEECH']['active'])
+        if config['SPEECH']['active'] == str(1):
+            text_to_speech(response)

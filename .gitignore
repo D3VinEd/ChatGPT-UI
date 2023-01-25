@@ -2,3 +2,4 @@
 /.idea
 /test/
 *.pyc
+config/config.ini
