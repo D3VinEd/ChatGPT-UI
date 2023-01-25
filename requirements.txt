@@ -1,4 +1,2 @@
 openai==0.26.2
-gtts
-playsound==1.2.2
 pyttsx3
