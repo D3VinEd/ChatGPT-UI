@@ -14,7 +14,7 @@ class ConfigChanger:
         self.root = Toplevel(master)
         self.root.title("Einstellungen")
         self.root.geometry("550x350")
-        self.root.resizable(None, None)
+        self.root.resizable(0, 0)
 
         self.api_key_var = tk.StringVar()
         self.api_key_var.set(self.config['OPENAI-API']['apikey'])
@@ -36,13 +36,16 @@ class ConfigChanger:
         self.temperature_label = ttk.Label(self.root, text="Temperature:")
         self.temperature_entry = ttk.Entry(self.root, textvariable=self.temperature_var)
 
-        self.save_button = ttk.Button(self.root, text="Save", command=self.save_config)
+        self.save_button = ttk.Button(self.root, text="Speichern", command=self.save_config)
 
         self.helper_text = "API-Key: Persönlicher API-Key von Openai. \n\n" \
                            "Max Tokens: Maximale Anzahl von Tokens die für die Anfrage ausgegeben werden soll. \n" \
-                           "Derzeit maximum 4096. Request UND Response verbrauchen Tokens. Niemals volle 4000 angeben \n\n" \
+                           "Derzeit maximum 4096. Request UND Response verbrauchen Tokens." \
+                           " Niemals volle 4000 angeben \n\n" \
                            "Engine: text-davinci-003, text-curie-001, text-babbage-001, text-ada-001\n\n" \
-                           "Temperature: Die temperature in der chat gpt API bestimmt den Grad der Kreativität und Abweichung \nder generierten Antworten von der vorherigen Trainingsdaten.\nWerte zwischen 0 - 0.9"
+                           "Temperature: Die temperature in der chat gpt API bestimmt den Grad der Kreativität" \
+                           " und Abweichung \nder generierten Antworten von der vorherigen Trainingsdaten.\n" \
+                           "Werte zwischen 0 - 0.9"
         self.helper_label = ttk.Label(self.root, text=self.helper_text)
 
         self.api_key_label.grid(row=0, column=0, padx=5, pady=5)
@@ -71,4 +74,3 @@ class ConfigChanger:
             self.config.write(configfile)
 
         self.root.destroy()
-
