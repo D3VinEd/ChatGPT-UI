@@ -38,8 +38,10 @@ class ChatGPT:
         self.answer_scrollbar_y.pack(side=RIGHT, fill=Y)
 
         # Question - Frame
-        self.question = Text(self.question_frame, height=15, width=110, yscrollcommand=self.question_scrollbar_y.set,
+        self.question_label = Label(self.question_frame, text="Frage:", pady=5, padx=5)
+        self.question = Text(self.question_frame, height=8, width=110, yscrollcommand=self.question_scrollbar_y.set,
                              xscrollcommand=self.question_scrollbar_x.set, wrap='none')
+        self.question_label.pack(side=LEFT)
         self.question.pack(side=LEFT, fill=BOTH)
 
         # Button Absenden
@@ -55,9 +57,10 @@ class ChatGPT:
         self.settings_button.pack(side=LEFT, pady=5, padx=5)
 
         # Answer - Frame
+        self.answer_label = Label(self.answer_frame, text="Antwort:", pady=5, padx=5)
         self.answer = Text(self.answer_frame, height=15, width=110, yscrollcommand=self.answer_scrollbar_y.set,
                            xscrollcommand=self.answer_scrollbar_x.set, wrap='none')
-
+        self.answer_label.pack(side=LEFT)
         self.answer.pack(side=LEFT)
 
         # Scrollbar-Config
